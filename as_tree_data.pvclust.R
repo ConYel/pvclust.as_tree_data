@@ -65,7 +65,7 @@ as.phylo.hclust_node <- function(x){
 ### tranforming the pvclust tree object to tibble 
 phylo_res <- as.phylo.hclust_node(result$hclust) %>% 
   tidytree::as_tibble() 
-### tranforming the pvclust bootstraps values to tibble with key column:"node"
+### tranforming the pvclust bootstraps values to tibble with key column:"label"
 tree_boots <- (round(result$edges[, c("si","au", "bp")],2)*100) %>% 
         as_tibble() %>%
         mutate(label = paste(seq(1 , treeio::Ntip(ape::as.phylo(result$hclust))-1),"_edge",sep = ""))
